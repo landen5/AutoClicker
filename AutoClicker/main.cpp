@@ -10,6 +10,11 @@ int i = { 0 };
 
 bool isClicking = false;
 
+void makeWindowOnTop(sf::RenderWindow& window)
+{
+	HWND hwnd = window.getSystemHandle();
+	SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+}
 
 void doClick(sf::RenderWindow& window) 
 {
@@ -85,6 +90,7 @@ int main()
 		//draw everything here
 		//window.draw();
 		doClick(window);
+		makeWindowOnTop(window);
 
 		//end the current frame
 		//window.display();
