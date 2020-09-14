@@ -18,8 +18,10 @@ void makeWindowOnTop(sf::RenderWindow& window)
 
 void doClick(sf::RenderWindow& window) 
 {
-
-
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		std::cout << "Presssed space key" << "\n";
+	}
 	//assign class font to var
 	sf::Font font;
 
@@ -41,7 +43,7 @@ void doClick(sf::RenderWindow& window)
 
 		//click left mouse button ( ******OFF BY DEFAULT******) 
 		//mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-
+		mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
 		//std::cout << "Clicked mouse" << i << "\n";
 
 
@@ -63,9 +65,10 @@ int main()
 {
 	//create the window
 	sf::RenderWindow window(sf::VideoMode(200, 400), "AutoClicker", sf::Style::Close);
-	
+
 	//position of window relative to desktop (like offset kinda)
 	window.setPosition(sf::Vector2i(10, 10));
+
 	//as long as window is open, loop (run) the program (just remember that this loops through whatever functions are called in it, so I don't need loops inside of loops)
 	while (window.isOpen()) 
 	{
